@@ -1,9 +1,8 @@
 package com.example.dmaker01.entity;
 
 import com.example.dmaker01.code.StatusCode;
-import com.example.dmaker01.type.DeveloperLevel;
-import com.example.dmaker01.type.DeveloperSkillType;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,33 +12,26 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@ToString
-public class Developer {
+public class RetiredDeveloper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private DeveloperLevel developerLevel;
-
-    @Enumerated(EnumType.STRING)
-    private DeveloperSkillType developerSkillType;
-    @Enumerated(EnumType.STRING)
-    private StatusCode statusCode;
-
-    private Integer experienceYears;
-    private String memberId;
+    @NotNull
     private String name;
-    private Integer age;
+    @NotNull
+    private StatusCode statusCode;
+    @NotNull
+    private String memberId;
 
     @CreatedDate
     private LocalDateTime createdAt;
-
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
 }
