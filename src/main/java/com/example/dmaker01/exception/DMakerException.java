@@ -1,5 +1,8 @@
 package com.example.dmaker01.exception;
 
+import lombok.Getter;
+
+@Getter
 public class DMakerException extends RuntimeException {
     private DMakerErrorCode dMakerErrorCode;
     private String detailMessage;
