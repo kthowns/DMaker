@@ -52,9 +52,7 @@ public class DMakerService {
     public DeveloperDetailDto getDeveloperDetail(String memberId) {
         return developerRepository.findByMemberId(memberId)
                 .map(DeveloperDetailDto::fromEntity)
-                .orElseThrow(() -> {
-                    throw new DMakerException(DMakerErrorCode.NO_DEVELOPER);
-                });
+                .orElseThrow(() -> new DMakerException(DMakerErrorCode.NO_DEVELOPER));
     }
 
     @Transactional
