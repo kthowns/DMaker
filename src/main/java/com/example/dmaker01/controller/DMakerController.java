@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-public class DmakerController {
+public class DMakerController {
     private final DMakerService dmakerService;
 
     @GetMapping("/developers")

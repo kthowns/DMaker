@@ -21,8 +21,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(DmakerController.class)
-class DmakerControllerTest {
+@WebMvcTest(DMakerController.class)
+class DMakerControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -46,10 +46,13 @@ class DmakerControllerTest {
                 .developerLevel(DeveloperLevel.SENIOR)
                 .memberId("memberId1").build();
 
+        //given
         given(dMakerService.getAllEmployedDevelopers())
                 .willReturn(Arrays.asList(juniorDeveloperDto, seniorDeveloperDto));
 
+        //when
         mockMvc.perform(get("/developers").contentType(contentType))
+                //then
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(
