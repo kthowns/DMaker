@@ -4,6 +4,10 @@ import com.example.dmaker01.code.StatusCode;
 import com.example.dmaker01.entity.Developer;
 import com.example.dmaker01.type.DeveloperLevel;
 import com.example.dmaker01.type.DeveloperSkillType;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.*;
 
 @Getter
