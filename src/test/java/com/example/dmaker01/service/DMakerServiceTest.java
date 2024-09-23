@@ -31,9 +31,6 @@ class DMakerServiceTest {
     @Mock
     private DeveloperRepository developerRepository;
 
-    @Mock
-    private RetiredDeveloperRepository retiredDeveloperRepository;
-
     @InjectMocks
     private DMakerService dMakerService;
 
@@ -46,7 +43,6 @@ class DMakerServiceTest {
                         .age(20)
                         .statusCode(StatusCode.EMPLOYED)
                         .build();
-
 
     private final CreateDeveloper.Request defaultCreateRequest = CreateDeveloper.Request.builder()
             .developerLevel(DeveloperLevel.JUNIOR)
