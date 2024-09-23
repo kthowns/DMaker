@@ -75,8 +75,6 @@ class DMakerServiceTest {
                 .willReturn(Optional.empty());
         ArgumentCaptor<Developer> captorDeveloper =
                 ArgumentCaptor.forClass(Developer.class);
-        ArgumentCaptor<String> captorString =
-                ArgumentCaptor.forClass(String.class);
 
         //when
         dMakerService.createDeveloper(defaultCreateRequest);
