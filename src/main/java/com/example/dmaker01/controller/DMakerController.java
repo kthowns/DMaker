@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-public class DmakerController {
+public class DMakerController {
     private final DMakerService dmakerService;
 
     @GetMapping("/developers")
@@ -61,20 +61,5 @@ public class DmakerController {
         log.info("DELETE /developer/" + memberId + " HTTP/1.1");
 
         return dmakerService.deleteDeveloper(memberId);
-    }
-
-    @ResponseStatus(HttpStatus.CONFLICT)
-    @ExceptionHandler(DMakerException.class)
-    public DMakerErrorResponse handleException(
-            DMakerException e,
-            HttpServletRequest request
-    ) {
-        log.error("errorCode : {}, url : {}, message : {}",
-                e.getDMakerErrorCode(), request.getRequestURI(), e.getMessage());
-
-        return DMakerErrorResponse.builder()
-                .detailMessage(e.getDetailMessage())
-                .dMakerErrorCode(e.getDMakerErrorCode())
-                .build();
     }
 }

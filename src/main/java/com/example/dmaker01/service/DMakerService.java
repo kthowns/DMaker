@@ -39,7 +39,7 @@ public class DMakerService {
                 .build();
 
         developerRepository.save(developer);
-        return new CreateDeveloper.Response().fromEntity(developer);
+        return CreateDeveloper.Response.fromEntity(developer);
     }
 
     public List<DeveloperDto> getAllEmployedDevelopers() {
