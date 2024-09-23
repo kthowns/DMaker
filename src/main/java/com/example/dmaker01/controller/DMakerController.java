@@ -1,10 +1,13 @@
 package com.example.dmaker01.controller;
 
 import com.example.dmaker01.dto.*;
+import com.example.dmaker01.exception.DMakerException;
 import com.example.dmaker01.service.DMakerService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +15,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @Slf4j
-public class DmakerController {
+public class DMakerController {
     private final DMakerService dmakerService;
 
     @GetMapping("/developers")
