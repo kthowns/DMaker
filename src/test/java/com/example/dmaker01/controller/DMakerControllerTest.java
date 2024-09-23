@@ -35,7 +35,7 @@ class DMakerControllerTest {
                     StandardCharsets.UTF_8);
 
     @Test
-    void getAllDevelopers() throws Exception {
+    void getAllEmployedDevelopersTest() throws Exception {
         DeveloperDto juniorDeveloperDto = DeveloperDto.builder()
                 .developerSkillType(DeveloperSkillType.BACK_END)
                 .developerLevel(DeveloperLevel.JUNIOR)
