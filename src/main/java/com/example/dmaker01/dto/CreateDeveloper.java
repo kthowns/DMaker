@@ -30,9 +30,9 @@ public class CreateDeveloper {
         @Size(min = 3, max = 50, message="memberId size must 3 ~ 50")
         private String memberId;
         @NotNull
-        @Size(min = 3, max = 20, message="memberId size must 3 ~ 50")
+        @Min(value = 1, message="Name size must be at least 1 letter")
         private String name;
-        @Min(18)
+        @Min(value=18, message = "Only 18+ is available")
         private Integer age;
     }
 
