@@ -64,7 +64,7 @@ class DMakerControllerTest {
                 ).andExpect(
                         jsonPath("$.[1].developerSkillType",
                                 is(DeveloperSkillType.FRONT_END.name()))
-                ).andExpect(
+                  ).andExpect(
                         jsonPath("$.[1].developerLevel",
                                 is(DeveloperLevel.SENIOR.name()))
                 );
