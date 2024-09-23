@@ -1,10 +1,12 @@
-POST http://localhost:8080/create-developer
+### POST request to example server
+POST http://127.0.0.1:8080/create-developer
 Content-Type: application/json
 
 {
-  "developerLevel": "JUNIOR",
-  "developerSkillType": "FRONT_END",
-  "memberId": "qweqa",
-  "name": "Kim",
-  "experienceYears": 2
+    "developerSkillType": "FRONT_END",
+    "developerLevel": "JUNIOR",
+    "name": "ASD",
+    "age": 25,
+    "experienceYears": 2,
+    "memberId": "asd"
 }

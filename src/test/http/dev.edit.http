@@ -1,0 +1,9 @@
+PUT http://127.0.0.1:8080/developer/QWERTY
+Content-Type: application/json
+
+{
+  "developerSkillType": "FRONT_END",
+  "developerLevel": "SENIOR",
+  "age": 25,
+  "experienceYears": 2
+}
