@@ -1,6 +1,7 @@
 package com.example.dmaker01.entity;
 
-import com.example.dmaker01.code.StatusCode;
+import com.example.dmaker01.type.DeveloperLevel;
+import com.example.dmaker01.type.DeveloperSkillType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -22,10 +23,11 @@ public class RetiredDeveloper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
     private String name;
-    @NotNull
-    private StatusCode statusCode;
+    @Enumerated(EnumType.STRING)
+    private DeveloperLevel developerLevel;
+    @Enumerated(EnumType.STRING)
+    private DeveloperSkillType developerSkillType;
     @NotNull
     private String memberId;
 

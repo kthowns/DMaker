@@ -1,4 +1,4 @@
-PUT http://127.0.0.1:8080/developer/QWERTY
+PUT http://127.0.0.1:8080/developer/zxc
 Content-Type: application/json
 
 {

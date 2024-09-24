@@ -1,9 +1,7 @@
 package com.example.dmaker01.dto;
 
-import com.example.dmaker01.code.StatusCode;
+import com.example.dmaker01.code.DeveloperStatusCode;
 import com.example.dmaker01.entity.Developer;
-import com.example.dmaker01.type.DeveloperLevel;
-import com.example.dmaker01.type.DeveloperSkillType;
 import lombok.*;
 
 @Getter
@@ -14,13 +12,13 @@ import lombok.*;
 @ToString
 public class RetiredDeveloperDto {
     private String name;
-    private StatusCode statusCode;
+    private DeveloperStatusCode developerStatusCode;
     private String memberId;
 
-    public static RetiredDeveloperDto fromEntity(Developer developer) {
+    public static RetiredDeveloperDto fromEntity(@NonNull Developer developer) {
         return RetiredDeveloperDto.builder()
                 .name(developer.getName())
-                .statusCode(developer.getStatusCode())
+                .developerStatusCode(developer.getDeveloperStatusCode())
                 .memberId(developer.getMemberId())
                 .build();
     }

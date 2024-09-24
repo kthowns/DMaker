@@ -1,12 +1,10 @@
 package com.example.dmaker01.dto;
 
-import com.example.dmaker01.entity.Developer;
 import com.example.dmaker01.type.DeveloperLevel;
 import com.example.dmaker01.type.DeveloperSkillType;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
 public class EditDeveloper {

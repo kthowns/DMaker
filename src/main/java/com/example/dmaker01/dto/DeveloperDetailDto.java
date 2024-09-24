@@ -1,13 +1,9 @@
 package com.example.dmaker01.dto;
 
-import com.example.dmaker01.code.StatusCode;
+import com.example.dmaker01.code.DeveloperStatusCode;
 import com.example.dmaker01.entity.Developer;
 import com.example.dmaker01.type.DeveloperLevel;
 import com.example.dmaker01.type.DeveloperSkillType;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import lombok.*;
 
 @Getter
@@ -16,6 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @ToString
+@EqualsAndHashCode
 public class DeveloperDetailDto {
     private DeveloperLevel developerLevel;
     private DeveloperSkillType developerSkillType;
@@ -23,17 +20,17 @@ public class DeveloperDetailDto {
     private String memberId;
     private String name;
     private Integer age;
-    private StatusCode statusCode;
+    private DeveloperStatusCode developerStatusCode;
 
     public static DeveloperDetailDto fromEntity(Developer developer) {
         return DeveloperDetailDto.builder()
-                .developerLevel(developer.getDeveloperLevel())
-                .developerSkillType(developer.getDeveloperSkillType())
-                .experienceYears(developer.getExperienceYears())
                 .memberId(developer.getMemberId())
                 .name(developer.getName())
-                .statusCode(developer.getStatusCode())
+                .developerStatusCode(developer.getDeveloperStatusCode())
+                .developerLevel(developer.getDeveloperLevel())
                 .age(developer.getAge())
+                .developerSkillType(developer.getDeveloperSkillType())
+                .experienceYears(developer.getExperienceYears())
                 .build();
     }
 }

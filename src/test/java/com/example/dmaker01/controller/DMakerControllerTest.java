@@ -34,17 +34,18 @@ class DMakerControllerTest {
                     MediaType.APPLICATION_JSON.getSubtype(),
                     StandardCharsets.UTF_8);
 
+    DeveloperDto juniorDeveloperDto = DeveloperDto.builder()
+            .developerSkillType(DeveloperSkillType.BACK_END)
+            .developerLevel(DeveloperLevel.JUNIOR)
+            .memberId("memberId1").build();
+
+    DeveloperDto seniorDeveloperDto = DeveloperDto.builder()
+            .developerSkillType(DeveloperSkillType.FRONT_END)
+            .developerLevel(DeveloperLevel.SENIOR)
+            .memberId("memberId1").build();
+
     @Test
     void getAllEmployedDevelopersTest() throws Exception {
-        DeveloperDto juniorDeveloperDto = DeveloperDto.builder()
-                .developerSkillType(DeveloperSkillType.BACK_END)
-                .developerLevel(DeveloperLevel.JUNIOR)
-                .memberId("memberId1").build();
-
-        DeveloperDto seniorDeveloperDto = DeveloperDto.builder()
-                .developerSkillType(DeveloperSkillType.FRONT_END)
-                .developerLevel(DeveloperLevel.SENIOR)
-                .memberId("memberId1").build();
 
         //given
         given(dMakerService.getAllEmployedDevelopers())
