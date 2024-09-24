@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
 @Slf4j
 @RestControllerAdvice
@@ -28,6 +29,7 @@ public class DMakerExceptionHandler {
                 .build();
     }
 
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(value = {
             HttpRequestMethodNotSupportedException.class,
             MethodArgumentNotValidException.class,
@@ -44,11 +46,25 @@ public class DMakerExceptionHandler {
                 .build();
     }
 
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(ResponseStatusException.class)
+    public DMakerErrorResponse handleException(
+            ResponseStatusException e, HttpServletRequest request
+    ){
+        log.error("uri : {}, message : {}", request.getRequestURI(), e.getMessage());
+
+        return DMakerErrorResponse.builder()
+                .errorMessage(e.getMessage())
+                .errorCode(DMakerErrorCode.INTERNAL_SERVER_ERROR)
+                .build();
+    }
+
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(Exception.class)
     public DMakerErrorResponse handleException(
             Exception e, HttpServletRequest request
     ) {
-        log.error("errorCode : {}, message : {}", request.getRequestURI(), e.getMessage());
+        log.error("uri : {}, errorCode : {}", request.getRequestURI(), e.getMessage());
 
         return DMakerErrorResponse.builder()
                 .errorMessage(DMakerErrorCode.INTERNAL_SERVER_ERROR.getMessage())
