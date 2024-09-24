@@ -1,6 +1,5 @@
 package com.example.dmaker01.type;
 
-import com.example.dmaker01.constant.DMakerConstant;
 import com.example.dmaker01.exception.DMakerErrorCode;
 import com.example.dmaker01.exception.DMakerException;
 import lombok.AllArgsConstructor;
