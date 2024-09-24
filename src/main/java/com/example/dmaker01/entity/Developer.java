@@ -1,6 +1,6 @@
 package com.example.dmaker01.entity;
 
-import com.example.dmaker01.code.StatusCode;
+import com.example.dmaker01.code.DeveloperStatusCode;
 import com.example.dmaker01.type.DeveloperLevel;
 import com.example.dmaker01.type.DeveloperSkillType;
 import jakarta.persistence.*;
@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @ToString
+@EqualsAndHashCode
 public class Developer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +31,7 @@ public class Developer {
     @Enumerated(EnumType.STRING)
     private DeveloperSkillType developerSkillType;
     @Enumerated(EnumType.STRING)
-    private StatusCode statusCode;
+    private DeveloperStatusCode developerStatusCode;
 
     private Integer experienceYears;
     private String memberId;
