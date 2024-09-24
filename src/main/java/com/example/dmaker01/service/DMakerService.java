@@ -11,7 +11,9 @@ import com.example.dmaker01.repository.RetiredDeveloperRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -82,21 +84,26 @@ public class DMakerService {
 
     private Developer getDeveloperByMemberId(String memberId) {
         Developer developer = developerRepository.findByMemberId(memberId)
-                .orElseThrow(() -> new DMakerException(DMakerErrorCode.NO_DEVELOPER));
-        if(developer.getDeveloperStatusCode() == DeveloperStatusCode.RETIRED)
-            throw new DMakerException(DMakerErrorCode.NO_DEVELOPER);
+                //.orElseThrow(() -> new DMakerException(DMakerErrorCode.NO_DEVELOPER));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        validateIsRetired(developer);
+
         return developer;
     }
 
-    private Developer validateDeleteDeveloper(String memberId){
+    private Developer validateDeleteDeveloper(String memberId) {
         Developer developer = getDeveloperByMemberId(memberId);
-        if(developer.getDeveloperStatusCode() != DeveloperStatusCode.EMPLOYED)
-            throw new DMakerException(DMakerErrorCode.NO_DEVELOPER);
+        validateIsRetired(developer);
 
         return developer;
     }
 
-    private Developer createDeveloperFromRequest(CreateDeveloper.Request request){
+    private static void validateIsRetired(Developer developer) {
+        if (developer.getDeveloperStatusCode() != DeveloperStatusCode.RETIRED)
+            throw new DMakerException(DMakerErrorCode.NO_DEVELOPER);
+    }
+
+    private Developer createDeveloperFromRequest(CreateDeveloper.Request request) {
         return Developer.builder()
                 .age(request.getAge())
                 .developerLevel(request.getDeveloperLevel())
