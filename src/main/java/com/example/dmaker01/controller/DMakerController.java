@@ -1,13 +1,10 @@
 package com.example.dmaker01.controller;
 
 import com.example.dmaker01.dto.*;
-import com.example.dmaker01.exception.DMakerException;
 import com.example.dmaker01.service.DMakerService;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,13 +13,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class DMakerController {
-    private final DMakerService dmakerService;
+    private final DMakerService dMakerService;
 
     @GetMapping("/developers")
     public List<DeveloperDto> getAllDevelopers() {
         log.info("GET /developers HTTP/1.1");
 
-        return dmakerService.getAllEmployedDevelopers();
+        return dMakerService.getAllEmployedDevelopers();
     }
 
     @PostMapping("/create-developer")
@@ -31,7 +28,7 @@ public class DMakerController {
     ) {
         log.info("request : {}", request);
 
-        return dmakerService.createDeveloper(request);
+        return dMakerService.createDeveloper(request);
     }
 
     @GetMapping("/developer/{memberId}")
@@ -40,7 +37,7 @@ public class DMakerController {
     ) {
         log.info("GET /developer/" + memberId + " HTTP/1.1");
 
-        return dmakerService.getDeveloperDetail(memberId);
+        return dMakerService.getDeveloperDetail(memberId);
     }
 
 
@@ -51,7 +48,7 @@ public class DMakerController {
     ) {
         log.info("PUT /developer/" + memberId + " HTTP/1.1");
 
-        return dmakerService.editDeveloper(memberId, request);
+        return dMakerService.editDeveloper(memberId, request);
     }
 
     @DeleteMapping("/developer/{memberId}")
@@ -60,6 +57,6 @@ public class DMakerController {
     ) {
         log.info("DELETE /developer/" + memberId + " HTTP/1.1");
 
-        return dmakerService.deleteDeveloper(memberId);
+        return dMakerService.deleteDeveloper(memberId);
     }
 }
