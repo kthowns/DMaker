@@ -30,7 +30,7 @@ public class CreateDeveloper {
         @Size(min = 3, max = 50, message="memberId size must 3 ~ 50")
         private String memberId;
         @NotNull
-        @Min(value = 1, message="Name size must be at least 1 letter")
+        @Size(min = 3, max = 50, message="Name size must be at least 1 letter")
         private String name;
         @Min(value=18, message = "Only 18+ is available")
         private Integer age;
@@ -41,6 +41,7 @@ public class CreateDeveloper {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
+    @EqualsAndHashCode
     public static class Response{
         private DeveloperLevel developerLevel;
         private DeveloperSkillType developerSkillType;
