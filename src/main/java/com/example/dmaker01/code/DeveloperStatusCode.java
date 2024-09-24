@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum StatusCode {
+public enum DeveloperStatusCode {
     EMPLOYED("고용"),
     RETIRED("퇴직");
 
